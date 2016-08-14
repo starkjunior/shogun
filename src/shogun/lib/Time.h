@@ -23,13 +23,15 @@
 
 #if defined(_MSC_VER) || defined(__MINGW32__)
 
-#ifndef _TIMEVAL_DEFINED /* also in winsock[2].h */
+#ifdef __MINGW32__
+#ifndef _TIMEVAL_DEFINED
 #define _TIMEVAL_DEFINED
 struct timeval {
     long tv_sec;
     long tv_usec;
 };
 #endif /* _TIMEVAL_DEFINED */
+#endif /* __MINGW32__ */
 
 int gettimeofday(struct timeval* tp, void* tzp) {
     DWORD t;
